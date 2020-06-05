@@ -40,6 +40,7 @@ class TesseROSWrapper:
         # `publish_mono_stereo` is true to publish one channel stereo images
         # Otherwise, publish as bgr8
         publish_mono_stereo    = rospy.get_param("~publish_mono_stereo", True)
+        self.use_rgb_encoding  = rospy.get_param("~use_rgb_encoding", False)
         publish_segmentation   = rospy.get_param("~publish_segmentation", True)
         publish_depth          = rospy.get_param("~publish_depth", True)
         self.publish_metadata  = rospy.get_param("~publish_metadata", False)
@@ -256,7 +257,8 @@ class TesseROSWrapper:
                         data_response.images[i], 'mono8')
                 elif self.cameras[i][2] == Channels.THREE:
                     img_msg = self.cv_bridge.cv2_to_imgmsg(
-                        data_response.images[i], 'bgr8')
+                        data_response.images[i], 
+                        'rgb8' if self.use_rgb_encoding else 'bgr8')
 
                 # Sanity check resolutions.
                 assert(img_msg.width == self.cam_info_msgs[i].width)

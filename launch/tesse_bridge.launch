@@ -26,6 +26,7 @@
   <arg name="publish_segmentation"  default="true"/>
   <arg name="publish_depth"         default="true"/>
   <arg name="publish_mono_stereo"   default="true"/>
+  <arg name="use_rgb_encoding"      default="false"/>
   <arg name="publish_metadata"      default="false"/>
 
   <!-- Sim arguments -->
@@ -81,6 +82,7 @@
     <param name="publish_segmentation" value="$(arg publish_segmentation)"/>
     <param name="publish_depth"        value="$(arg publish_depth)"/>
     <param name="publish_mono_stereo"  value="$(arg publish_mono_stereo)"/>
+    <param name="use_rgb_encoding"     value="$(arg use_rgb_encoding)"/>
     <param name="publish_metadata"     value="$(arg publish_metadata)"/>
 
     <!-- Simulator and speed parameters -->
